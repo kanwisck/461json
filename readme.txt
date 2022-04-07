@@ -1,3 +1,2 @@
-test site (google maps, not earth): https://jsfiddle.net/xLozsqg9/1/
-
-json not yet integrated to jsfiddle
+terminal 1: npx react-native start
+terminal 2: npx react-native run-android
