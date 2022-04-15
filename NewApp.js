@@ -50,7 +50,7 @@ class App extends React.Component {
       longitudeDelta: 0.0421},
       farms: data
     }
-    console.log("===farms.json: ",data)
+    //console.log("===farms.json: ",data)
   }
   
   render() {
@@ -69,8 +69,10 @@ class App extends React.Component {
           title={farm.name}
           pinColor="#360071" >
             <Callout tooltip={true}>
-              <View style={{ backgroundColor: "white", flex: 0.5 }}>
-                <Text>{farm.name}</Text>
+              <View style={{backgroundColor: "white", flex: 0.5, alignItems: "center"}}>
+                <Text style={{color: 'black'}}>{farm.name}</Text>
+                <Text></Text>
+                <Text>tmin 28°C | tmax 97°C | prcp 40mm</Text>
                 <Text>Click here to learn more</Text>
               </View>
             </Callout>
