@@ -28,9 +28,39 @@ const styles = StyleSheet.create({
   },
 });
 
+
+
 const FarmsMap = ({ navigation }) => {
-const [farms, setFarms] = useState(data)
+  const [farms, setFarms] = useState(data)
+  const [climateData, setClimateData] = useState({
+    year:[0]
+  })
   
+  const getCLimateData = async (lat, lon) => {
+    try {
+      const response = await fetch(`https://daymet.ornl.gov/single-pixel/api/data?lat=${lat}&lon=${lon}&vars=tmax,tmin,prcp&format=json`);
+      const json = await response.json();
+      setClimateData(json.data);
+      console.log("within getClimateData json.data.year:" ,json.data.year[0]);
+      return json.data;
+    } catch (error) {
+      console.error(error)
+    }
+    /*
+    return (await fetch(`https://daymet.ornl.gov/single-pixel/api/data?lat=${lat}&lon=${lon}&vars=tmax,tmin,prcp&format=json`)
+      .then((response) => response.json())
+      .then((json) => {
+        //console.log(json.data.year)
+        setClimateData(json.data)
+        return json.data
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+    );
+    */
+  }
+
   return (
     <MapView
         style={styles.map}
@@ -50,7 +80,15 @@ const [farms, setFarms] = useState(data)
           key={key} // to make react happy
           coordinate={{latitude: farm.latitude, longitude: farm.longitude}}
           title={farm.name}
-          pinColor="#360071">
+          pinColor="#360071"
+          onPress={
+            () => {
+              console.log("within marker onPress before query", climateData)
+              getCLimateData(farm.latitude, farm.longitude)
+              .then(console.log("within marker onPress after query", climateData))
+            }
+          }
+          >
             <Callout 
               tooltip={false}
               onPress={() => 
@@ -59,7 +97,7 @@ const [farms, setFarms] = useState(data)
               <View style={{backgroundColor: "white", flex: 1, alignItems: "center"}}>
                 <Text style={{color: 'black'}}>{farm.name}</Text>
                 <Text></Text>
-                <Text>tmin 28°C | tmax 97°C | prcp 40mm</Text>
+                <Text>{}</Text>
                 <Text>
                     <Image
                         source={{ uri: 'https://oregonhazelnuts.org/wordpress/wp-content/uploads/2020/05/Chambers-Trees-1540x819.jpg' }}
@@ -69,7 +107,6 @@ const [farms, setFarms] = useState(data)
                 <Button
                   title="Click here to learn more"
                 />
-                <Text style={{color: 'black'}}>Tap here to learn more</Text>
               </View>
             </Callout>
           </Marker>
@@ -80,50 +117,3 @@ const [farms, setFarms] = useState(data)
 }
 
 export default FarmsMap;
-/*
-export default
-class FarmsMap extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      initRegion: {
-      latitude: 44.65,
-      longitude: -123.03,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421},
-      farms: data
-    }
-    //console.log("===farms.json: ",data)
-  }
-  
-  render() {
-    return (    
-      <MapView
-        style={{ flex: 1 }}
-        provider={PROVIDER_GOOGLE}
-        showsUserLocation
-        initialRegion={this.state.initRegion}
-        mapType="satellite">
-
-        {Object.entries(this.state.farms).map(([key, farm]) => (
-          <Marker
-          key={key} // to make react happy
-          coordinate={{latitude: farm.latitude, longitude: farm.longitude}}
-          title={farm.name}
-          pinColor="#360071" >
-            <Callout tooltip={true}>
-              <View style={{backgroundColor: "white", flex: 0.5, alignItems: "center"}}>
-                <Text style={{color: 'black'}}>{farm.name}</Text>
-                <Text></Text>
-                <Text>tmin 28°C | tmax 97°C | prcp 40mm</Text>
-                <Text>Click here to learn more</Text>
-              </View>
-            </Callout>
-          </Marker>
-        ))}
-
-      </MapView>
-    );
-  }
-}
-*/
