@@ -14,7 +14,7 @@
 
 import React, {useState, useEffect } from 'react';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
-import { Text, View, StyleSheet, Dimensions} from 'react-native';
+import { Text, Image, Button, View, StyleSheet, Dimensions} from 'react-native';
 
 const data = require('../farms.json');
 //console.log(data);
@@ -60,6 +60,15 @@ const [farms, setFarms] = useState(data)
                 <Text style={{color: 'black'}}>{farm.name}</Text>
                 <Text></Text>
                 <Text>tmin 28°C | tmax 97°C | prcp 40mm</Text>
+                <Text>
+                    <Image
+                        source={{ uri: 'https://oregonhazelnuts.org/wordpress/wp-content/uploads/2020/05/Chambers-Trees-1540x819.jpg' }}
+                        style={{ width: 300, height: 200 }}
+                    />
+                </Text>
+                <Button
+                  title="Click here to learn more"
+                />
                 <Text style={{color: 'black'}}>Tap here to learn more</Text>
               </View>
             </Callout>
