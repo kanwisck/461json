@@ -6018,6 +6018,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
+"react-native-bottom-action-sheet@^2.0.2":
+  "integrity" "sha512-bZjac4z4lniGT6Dv3EI9yceM/MfZN2AVjy/4YXClIj9HtHRt5vpe0L7LzxsJoU4ut8EmEZeJ18dHAykeqMffSw=="
+  "resolved" "https://registry.npmjs.org/react-native-bottom-action-sheet/-/react-native-bottom-action-sheet-2.0.2.tgz"
+  "version" "2.0.2"
+
 "react-native-codegen@^0.0.8":
   "integrity" "sha512-k/944+0XD+8l7zDaiKfYabyEKmAmyZgS1mj+4LcSRPyHnrjgCHKrh/Y6jM6kucQ6xU1+1uyMmF/dSkikxK8i+Q=="
   "resolved" "https://registry.npmjs.org/react-native-codegen/-/react-native-codegen-0.0.8.tgz"
@@ -6040,6 +6045,11 @@
     "opencollective-postinstall" "^2.0.3"
     "react-native-ratings" "8.0.4"
     "react-native-size-matters" "^0.3.1"
+
+"react-native-image-helper@^0.0.3":
+  "integrity" "sha512-a4tPpxdnIy+qbd1XACHDO+DnmPsCt8qV0of/8zlLj6ssZuERCexD+n/9086O+05qj9K1m5x6mvECFsLmC5PFmg=="
+  "resolved" "https://registry.npmjs.org/react-native-image-helper/-/react-native-image-helper-0.0.3.tgz"
+  "version" "0.0.3"
 
 "react-native-maps@0.30.1":
   "integrity" "sha512-VDgGygFcXwKLFNmdGb5DVy3DJhjP3qCe3txzDfeO6kQyNELj875ZbZMTYW84XsLUBFNpAWXKffWvMKHMQKv2Gg=="

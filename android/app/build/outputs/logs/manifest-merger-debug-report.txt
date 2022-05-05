@@ -8,6 +8,8 @@ MERGED from F:\School Docs\461json\android\app\src\main\AndroidManifest.xml:1:1-
 MERGED from [com.facebook.flipper:flipper:0.99.0] C:\Users\kanwi\.gradle\caches\transforms-3\085f8b4a0f41cc85a44e54de4c1c514d\transformed\jetified-flipper-0.99.0\AndroidManifest.xml:8:1-18:12
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.99.0] C:\Users\kanwi\.gradle\caches\transforms-3\e62ba9cdfcbc65847217ffce271b75ae\transformed\jetified-flipper-network-plugin-0.99.0\AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.99.0] C:\Users\kanwi\.gradle\caches\transforms-3\a85e37ddf85ad4783e2afc44e21b0206\transformed\jetified-flipper-fresco-plugin-0.99.0\AndroidManifest.xml:8:1-15:12
+MERGED from [:react-native-bottom-action-sheet] F:\School Docs\461json\node_modules\react-native-bottom-action-sheet\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-image-helper] F:\School Docs\461json\node_modules\react-native-image-helper\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-maps] F:\School Docs\461json\node_modules\react-native-maps\lib\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-12:12
 MERGED from [:react-native-safe-area-context] F:\School Docs\461json\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] F:\School Docs\461json\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
@@ -31,6 +33,7 @@ MERGED from [com.facebook.fresco:memory-type-ashmem:2.5.0] C:\Users\kanwi\.gradl
 MERGED from [com.facebook.fresco:imagepipeline:2.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\8dfe17c740417118a265352aae95768c\transformed\jetified-imagepipeline-2.5.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:nativeimagetranscoder:2.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\ff1cb32f1b66b2cce2adc140daa8ffe3\transformed\jetified-nativeimagetranscoder-2.5.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-base:2.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\6b114a8939e3494460565cb087972b5e\transformed\jetified-imagepipeline-base-2.5.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.github.javiersantos:BottomDialogs:1.2.1] C:\Users\kanwi\.gradle\caches\transforms-3\23c0e6db215f68cf323258f2f13b6d3d\transformed\jetified-BottomDialogs-1.2.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\d7efdea417285eb87863eac02e7eca7d\transformed\material-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.3.0] C:\Users\kanwi\.gradle\caches\transforms-3\cc228208a118abab8e3626daa1d5d918\transformed\appcompat-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.work:work-runtime:2.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\65d202840769caa5f03e47e62577f0b3\transformed\work-runtime-2.5.0\AndroidManifest.xml:17:1-143:12
@@ -54,11 +57,11 @@ MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\kanwi\.gradle\caches
 MERGED from [androidx.fragment:fragment:1.3.4] C:\Users\kanwi\.gradle\caches\transforms-3\7ceff8a881cf225c8430b88db6f40e05\transformed\fragment-1.3.4\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.2.3] C:\Users\kanwi\.gradle\caches\transforms-3\2acf1a9c2ce85b4e72cfda4e71aad8e6\transformed\jetified-activity-1.2.3\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\ed1fb4f4c22b1099e078b01551fe3403\transformed\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.2.0] C:\Users\kanwi\.gradle\caches\transforms-3\021b0b14525b7a5cfb20cf681b0bcfb1\transformed\transition-1.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\7f04697b6371bd88d7088940d0625bf3\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\5aed98e1a7bd35d26e6b7e123a4f58e5\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\21b52207a6518d44b5d53bf208d72f33\transformed\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\28631a0b111c0273601954918fe48ec5\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.transition:transition:1.2.0] C:\Users\kanwi\.gradle\caches\transforms-3\021b0b14525b7a5cfb20cf681b0bcfb1\transformed\transition-1.2.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\7f04697b6371bd88d7088940d0625bf3\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\4cfa2ef3764f868c4ac286f96c605047\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\b1fe9740f6c86f0b7649a763c3bf2b85\transformed\core-1.5.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\bd4596c4e03a42881733f45db8a548c5\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -74,6 +77,7 @@ MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\kanwi\.gradle\caches\trans
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\8ababc1243821879f2e0c630e14fad82\transformed\lifecycle-livedata-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\kanwi\.gradle\caches\transforms-3\03d84f79ddc5d095549aff719b894525\transformed\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\43849a663b47b5e3a36a05a548a0e4d6\transformed\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.prscx:bottomsheetbuilder:fixes-SNAPSHOT] C:\Users\kanwi\.gradle\caches\transforms-3\2d4fa7ad5c1388620b0199cc6a614125\transformed\jetified-bottomsheetbuilder-fixes-SNAPSHOT\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\kanwi\.gradle\caches\transforms-3\1e78fd9eb2bdb85aa2e21c7f4ebdf4a5\transformed\jetified-android-maps-utils-0.5\AndroidManifest.xml:2:1-13:12
 MERGED from [com.facebook.fresco:fbcore:2.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\1baec9233d2cd6421cae3409a4e1f494\transformed\jetified-fbcore-2.5.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\2e9fb0efe392e058045f5a12fe5867c7\transformed\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
@@ -211,6 +215,10 @@ MERGED from [com.facebook.flipper:flipper-network-plugin:0.99.0] C:\Users\kanwi\
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.99.0] C:\Users\kanwi\.gradle\caches\transforms-3\e62ba9cdfcbc65847217ffce271b75ae\transformed\jetified-flipper-network-plugin-0.99.0\AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.99.0] C:\Users\kanwi\.gradle\caches\transforms-3\a85e37ddf85ad4783e2afc44e21b0206\transformed\jetified-flipper-fresco-plugin-0.99.0\AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.99.0] C:\Users\kanwi\.gradle\caches\transforms-3\a85e37ddf85ad4783e2afc44e21b0206\transformed\jetified-flipper-fresco-plugin-0.99.0\AndroidManifest.xml:11:5-13:41
+MERGED from [:react-native-bottom-action-sheet] F:\School Docs\461json\node_modules\react-native-bottom-action-sheet\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-bottom-action-sheet] F:\School Docs\461json\node_modules\react-native-bottom-action-sheet\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-image-helper] F:\School Docs\461json\node_modules\react-native-image-helper\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-image-helper] F:\School Docs\461json\node_modules\react-native-image-helper\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-maps] F:\School Docs\461json\node_modules\react-native-maps\lib\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-maps] F:\School Docs\461json\node_modules\react-native-maps\lib\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] F:\School Docs\461json\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
@@ -257,6 +265,8 @@ MERGED from [com.facebook.fresco:nativeimagetranscoder:2.5.0] C:\Users\kanwi\.gr
 MERGED from [com.facebook.fresco:nativeimagetranscoder:2.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\ff1cb32f1b66b2cce2adc140daa8ffe3\transformed\jetified-nativeimagetranscoder-2.5.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-base:2.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\6b114a8939e3494460565cb087972b5e\transformed\jetified-imagepipeline-base-2.5.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-base:2.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\6b114a8939e3494460565cb087972b5e\transformed\jetified-imagepipeline-base-2.5.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.javiersantos:BottomDialogs:1.2.1] C:\Users\kanwi\.gradle\caches\transforms-3\23c0e6db215f68cf323258f2f13b6d3d\transformed\jetified-BottomDialogs-1.2.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.javiersantos:BottomDialogs:1.2.1] C:\Users\kanwi\.gradle\caches\transforms-3\23c0e6db215f68cf323258f2f13b6d3d\transformed\jetified-BottomDialogs-1.2.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\d7efdea417285eb87863eac02e7eca7d\transformed\material-1.1.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\d7efdea417285eb87863eac02e7eca7d\transformed\material-1.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.3.0] C:\Users\kanwi\.gradle\caches\transforms-3\cc228208a118abab8e3626daa1d5d918\transformed\appcompat-1.3.0\AndroidManifest.xml:20:5-22:41
@@ -303,16 +313,16 @@ MERGED from [androidx.activity:activity:1.2.3] C:\Users\kanwi\.gradle\caches\tra
 MERGED from [androidx.activity:activity:1.2.3] C:\Users\kanwi\.gradle\caches\transforms-3\2acf1a9c2ce85b4e72cfda4e71aad8e6\transformed\jetified-activity-1.2.3\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\ed1fb4f4c22b1099e078b01551fe3403\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\ed1fb4f4c22b1099e078b01551fe3403\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.2.0] C:\Users\kanwi\.gradle\caches\transforms-3\021b0b14525b7a5cfb20cf681b0bcfb1\transformed\transition-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] C:\Users\kanwi\.gradle\caches\transforms-3\021b0b14525b7a5cfb20cf681b0bcfb1\transformed\transition-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\7f04697b6371bd88d7088940d0625bf3\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\7f04697b6371bd88d7088940d0625bf3\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\5aed98e1a7bd35d26e6b7e123a4f58e5\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\5aed98e1a7bd35d26e6b7e123a4f58e5\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\21b52207a6518d44b5d53bf208d72f33\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\21b52207a6518d44b5d53bf208d72f33\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\28631a0b111c0273601954918fe48ec5\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\28631a0b111c0273601954918fe48ec5\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.transition:transition:1.2.0] C:\Users\kanwi\.gradle\caches\transforms-3\021b0b14525b7a5cfb20cf681b0bcfb1\transformed\transition-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.transition:transition:1.2.0] C:\Users\kanwi\.gradle\caches\transforms-3\021b0b14525b7a5cfb20cf681b0bcfb1\transformed\transition-1.2.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\7f04697b6371bd88d7088940d0625bf3\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\7f04697b6371bd88d7088940d0625bf3\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\4cfa2ef3764f868c4ac286f96c605047\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\kanwi\.gradle\caches\transforms-3\4cfa2ef3764f868c4ac286f96c605047\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\b1fe9740f6c86f0b7649a763c3bf2b85\transformed\core-1.5.0\AndroidManifest.xml:20:5-22:41
@@ -343,6 +353,8 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\kanwi\.g
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\kanwi\.gradle\caches\transforms-3\03d84f79ddc5d095549aff719b894525\transformed\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\43849a663b47b5e3a36a05a548a0e4d6\transformed\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\kanwi\.gradle\caches\transforms-3\43849a663b47b5e3a36a05a548a0e4d6\transformed\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.prscx:bottomsheetbuilder:fixes-SNAPSHOT] C:\Users\kanwi\.gradle\caches\transforms-3\2d4fa7ad5c1388620b0199cc6a614125\transformed\jetified-bottomsheetbuilder-fixes-SNAPSHOT\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.prscx:bottomsheetbuilder:fixes-SNAPSHOT] C:\Users\kanwi\.gradle\caches\transforms-3\2d4fa7ad5c1388620b0199cc6a614125\transformed\jetified-bottomsheetbuilder-fixes-SNAPSHOT\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\kanwi\.gradle\caches\transforms-3\1e78fd9eb2bdb85aa2e21c7f4ebdf4a5\transformed\jetified-android-maps-utils-0.5\AndroidManifest.xml:5:5-43
 MERGED from [com.google.maps.android:android-maps-utils:0.5] C:\Users\kanwi\.gradle\caches\transforms-3\1e78fd9eb2bdb85aa2e21c7f4ebdf4a5\transformed\jetified-android-maps-utils-0.5\AndroidManifest.xml:5:5-43
 MERGED from [com.facebook.fresco:fbcore:2.5.0] C:\Users\kanwi\.gradle\caches\transforms-3\1baec9233d2cd6421cae3409a4e1f494\transformed\jetified-fbcore-2.5.0\AndroidManifest.xml:5:5-7:41

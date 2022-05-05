@@ -11,6 +11,10 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
 
+// react-native-bottom-action-sheet
+import ui.bottomactionsheet.RNBottomActionSheetPackage;
+// react-native-image-helper
+import prscx.imagehelper.RNImageHelperPackage;
 // react-native-maps
 import com.airbnb.android.react.maps.MapsPackage;
 // react-native-safe-area-context
@@ -66,6 +70,8 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
+      new RNBottomActionSheetPackage(),
+      new RNImageHelperPackage(),
       new MapsPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
