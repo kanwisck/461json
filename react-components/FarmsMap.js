@@ -18,9 +18,10 @@ import MapView, { PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
 import { Text, Image, Button, View, StyleSheet, Dimensions} from 'react-native';
 import RNBottomActionSheet from 'react-native-bottom-action-sheet';
 
-const data = require('../farms.json');
+const data = require('../farmsNew.json');
 //console.log(data);
 
+//----------------------Styles----------------------
 const styles = StyleSheet.create({    
   map: {
       position: "absolute",
@@ -32,8 +33,9 @@ const styles = StyleSheet.create({
 
 
 
-const FarmsMap = ({ navigation }) => {
+const FarmsMap = ({ navigation, search }) => {
   const [farms, setFarms] = useState(data)
+  var searchedFarms = []
   const [climateData, setClimateData] = useState({
     "year":[0],
     "yday":[0],
@@ -41,42 +43,54 @@ const FarmsMap = ({ navigation }) => {
     "tmax (deg c)":[0],
     "tmin (deg c)":[0]
   })
+
+  //----------------------Search Functionality----------------------
+  useEffect(() => {
+    searchedFarms = [] // wipes previous searches from searchedFarms
+    if (search != "") {
+      farms.find((farm) => {
+        // Look through all farm objects within farms
+        if (Object.values(farm).toString().toLowerCase()
+          .includes(search.toLowerCase())
+          || Object.values(farm.farmData).toString().toLowerCase()
+          .includes(search.toLowerCase())) {
+            // If any of the values of that farm object contain the user's search
+            // OR any of the farmData values have the user's search
+          searchedFarms.push(farm) // add to searchedFarms
+        }
+      })
+      setFarms(searchedFarms)
+    } else {
+      // search field was empty, display all data
+      setFarms(data)
+    }
+  }, [search])
+
+  /*
+  //----------------------Bottom Action Sheet Stuff----------------------
   const [alterView, setAlterView] = React.useState(false)
-  
   const toggleWindow = React.useCallback(
     () => setAlterView(!alterView),
     [alterView, setAlterView],
   )
+  */
+
+  //----------------------API Query----------------------
   const getCLimateData = async (lat, lon) => {
     try {
       const response = await fetch(`https://daymet.ornl.gov/single-pixel/api/data?lat=${lat}&lon=${lon}&vars=tmax,tmin,prcp&format=json`);
       const json = await response.json();
       setClimateData(json.data);
-      //console.log("within getClimateData json.data.year:" ,json.data.year[0]);
       return json.data;
     } catch (error) {
       console.error(error)
     }
-    /*
-    return (await fetch(`https://daymet.ornl.gov/single-pixel/api/data?lat=${lat}&lon=${lon}&vars=tmax,tmin,prcp&format=json`)
-      .then((response) => response.json())
-      .then((json) => {
-        //console.log(json.data.year)
-        setClimateData(json.data)
-        return json.data
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-    );
-    */
   }
 
   return (
     <>
     <MapView
         style={styles.map}
-        
         provider={PROVIDER_GOOGLE}
         showsUserLocation
         initialRegion={{
@@ -88,18 +102,15 @@ const FarmsMap = ({ navigation }) => {
         mapType="satellite">
 
         {Object.entries(farms).map(([key, farm]) => (
+          // Place a marker for all farm objects inside farms array
           <Marker
           key={key} // to make react happy
           coordinate={{latitude: farm.latitude, longitude: farm.longitude}}
           pinColor="#360071"
           onPress={
             () => {
-              //console.log("within marker onPress before query", climateData)
               getCLimateData(farm.latitude, farm.longitude)
-              console.log("within marker onPress after query", climateData["prcp (mm/day)"][0])
-              console.log("before alterView", alterView)
-              toggleWindow()
-              console.log("after alterView", alterView)
+              //toggleWindow()
             }
           }
           > 
@@ -114,16 +125,16 @@ const FarmsMap = ({ navigation }) => {
                   title="Click here to learn more"
                 />
                 {climateData["prcp (mm/day)"][0] != 0 ? 
-                <Text>
-                  prcp: {climateData["prcp (mm/day)"][0]}
+                <Text style={{color: 'lightblue'}}>
+                  prcp: {climateData["prcp (mm/day)"][0].toFixed(2)}mm
                 </Text> : null}
                 {climateData["tmax (deg c)"][0] != 0 ? 
-                <Text>
-                  tmax: {climateData["tmax (deg c)"][0]}
+                <Text style={{color: 'red'}}>
+                  tmax: {climateData["tmax (deg c)"][0].toFixed(2)}{'\u00B0'}C
                 </Text> : null}
                 {climateData["tmin (deg c)"][0] != 0 ? 
-                <Text style={{alignItems: "center"}}>
-                  tmin: {climateData["tmin (deg c)"][0]}{'\n'}
+                <Text style={{ color: "blue", alignItems: "center"}}>
+                  tmin: {climateData["tmin (deg c)"][0].toFixed(2)}{'\u00B0'}C{'\n'}
                 </Text> : null}
                 <Text>
                 <Image
@@ -131,7 +142,6 @@ const FarmsMap = ({ navigation }) => {
                         style={{ width: 300, height: 200 }}
                     />
                 </Text>
-                
               </View>
             </Callout>
           </Marker>

@@ -7,15 +7,15 @@ const Wrapper = ({ navigation }) => {
     const [search, setSearch] = useState("");
 
     const updateSearch = (search) => {
-    setSearch(search);
+        setSearch(search);
     };
     
     return (
         <View>
-            <FarmsMap navigation={navigation} />
+            <FarmsMap navigation={navigation} search={search} />
             <SearchBar 
                 style={styles.view}
-                placeholder="Type Here..."
+                placeholder="Search farms, crops, etc..."
                 onChangeText={updateSearch}
                 value={search} 
                 searchIcon = {{name: "magnifying-glass", type: 'foundation'}}
