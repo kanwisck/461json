@@ -1,14 +1,21 @@
 from email.policy import default
 import json
-#from pykml import parser
-#from os import path
+import csv
 
+# Farm class
 class Farm:
-    def __init__(self, name, lat, lng):
-        self.name = name
-        self.latitude = lat
-        self.longitude = lng
+        def __init__(self, name, lat, lng):
+                self.name = name
+                self.latitude = lat
+                self.longitude = lng
+                self.farmData = {}
+        
+        # print class for debugging purposes
+        def __repr__(self):
+                farm = str(self.name) + "," + str(self.latitude) + "," + str(self.longitude) + "," + str(self.farmData) + "\n\n\n"
+                return farm
 
+# A bad way of making list for coords
 aList = []
 aList.append(Farm("Chambers Farm",
         44.6488167,
@@ -200,9 +207,16 @@ aList.append(Farm("The Beitel Farm",
         44.8278554054365, 
         -122.7628299775307))
 
-
+# Parse OSFRP data
+with open('farms.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)        
+        reader = list(reader)
+        for idx, row in zip(aList, reader):
+                idx.farmData = row
+                
+# Convert to JSON
 jsonString = json.dumps(aList, default= lambda x: x.__dict__)
-jsonFile = open("farms.json", "w")
+jsonFile = open("farmsNew.json", "w")
 jsonFile.write(jsonString)
 jsonFile.close()
 
