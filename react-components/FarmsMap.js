@@ -35,7 +35,11 @@ const styles = StyleSheet.create({
 const FarmsMap = ({ navigation }) => {
   const [farms, setFarms] = useState(data)
   const [climateData, setClimateData] = useState({
-    "prcp (mm/day)":[0]
+    "year":[0],
+    "yday":[0],
+    "prcp (mm/day)":[0],
+    "tmax (deg c)":[0],
+    "tmin (deg c)":[0]
   })
   const [alterView, setAlterView] = React.useState(false)
   
@@ -99,34 +103,42 @@ const FarmsMap = ({ navigation }) => {
             }
           }
           > 
-          
+          <Callout 
+              tooltip={false}
+              onPress={() => 
+                navigation.navigate('FarmPage', {farmName: farm.name, longitude: farm.longitude, latitude: farm.latitude})
+              }>
+              <View style={{backgroundColor: "white", alignItems: "center"}}>
+                <Text style={{color: 'black'}}>{farm.name}</Text>
+                <Button
+                  title="Click here to learn more"
+                />
+                {climateData["prcp (mm/day)"][0] != 0 ? 
+                <Text>
+                  prcp: {climateData["prcp (mm/day)"][0]}
+                </Text> : null}
+                {climateData["tmax (deg c)"][0] != 0 ? 
+                <Text>
+                  tmax: {climateData["tmax (deg c)"][0]}
+                </Text> : null}
+                {climateData["tmin (deg c)"][0] != 0 ? 
+                <Text style={{alignItems: "center"}}>
+                  tmin: {climateData["tmin (deg c)"][0]}{'\n'}
+                </Text> : null}
+                <Text>
+                <Image
+                        source={{ uri: 'https://oregonhazelnuts.org/wordpress/wp-content/uploads/2020/05/Chambers-Trees-1540x819.jpg' }}
+                        style={{ width: 300, height: 200 }}
+                    />
+                </Text>
+                
+              </View>
+            </Callout>
           </Marker>
         ))}
 
       </MapView>
-      <RNBottomActionSheet.AlertView
-            visible={alterView}
-            title={"Awesome!"}
-            message={"What can we improve? Your feedback is always welcome."}
-            positiveText={"OK"}
-            positiveBackgroundColor={"#eeffee"}
-            positiveTextColor={"#006500"}
-            negativeText={"Exit"}
-            negativeBackgroundColor={"#ffebeb"}
-            negativeTextColor={"#760000"}
-            theme={"light"}
-            onPositive={() => {
-              console.log("positive clicked");
-              console.log("before pos", alterView)
-              toggleWindow()
-              console.log("after pos", alterView)
-            }}
-            onNegative={() => {
-              console.log("negative clicked");
-              console.log("before negative", alterView)
-              toggleWindow()
-              console.log("after negative", alterView)
-            }} />
+      
       </>
   )
 }
@@ -154,5 +166,30 @@ const FarmsMap = ({ navigation }) => {
                 />
               </View>
             </Callout>
+
+
+            <RNBottomActionSheet.AlertView
+            visible={alterView}
+            title={"Awesome!"}
+            message={"What can we improve? Your feedback is always welcome."}
+            positiveText={"OK"}
+            positiveBackgroundColor={"#eeffee"}
+            positiveTextColor={"#006500"}
+            negativeText={"Exit"}
+            negativeBackgroundColor={"#ffebeb"}
+            negativeTextColor={"#760000"}
+            theme={"light"}
+            onPositive={() => {
+              console.log("positive clicked");
+              console.log("before pos", alterView)
+              toggleWindow()
+              console.log("after pos", alterView)
+            }}
+            onNegative={() => {
+              console.log("negative clicked");
+              console.log("before negative", alterView)
+              toggleWindow()
+              console.log("after negative", alterView)
+            }} />
 */
 export default FarmsMap;
