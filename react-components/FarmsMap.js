@@ -22,7 +22,7 @@ const data = require('../farmsNew.json');
 //console.log(data);
 
 //----------------------Styles----------------------
-const styles = StyleSheet.create({    
+const styles = StyleSheet.create({
   map: {
       position: "absolute",
       width: Dimensions.get("window").width,
@@ -113,26 +113,28 @@ const FarmsMap = ({ navigation, search }) => {
               //toggleWindow()
             }
           }
-          > 
-          <Callout 
+          >
+          <Callout
               tooltip={false}
-              onPress={() => 
-                navigation.navigate('FarmPage', {farmName: farm.name, longitude: farm.longitude, latitude: farm.latitude})
+              onPress={() =>
+                navigation.navigate('FarmPage', {farmName: farm.name, longitude: farm.longitude, latitude: farm.latitude,
+                  years: climateData["year"], precipData: climateData["prcp (mm/day)"], tmaxData: climateData["tmax (deg c)"],
+                  tminData: climateData["tmin (deg c)"]})
               }>
               <View style={{backgroundColor: "white", alignItems: "center"}}>
                 <Text style={{color: 'black'}}>{farm.name}</Text>
                 <Button
                   title="Click here to learn more"
                 />
-                {climateData["prcp (mm/day)"][0] != 0 ? 
+                {climateData["prcp (mm/day)"][0] != 0 ?
                 <Text style={{color: 'lightblue'}}>
                   prcp: {climateData["prcp (mm/day)"][0].toFixed(2)}mm
                 </Text> : null}
-                {climateData["tmax (deg c)"][0] != 0 ? 
+                {climateData["tmax (deg c)"][0] != 0 ?
                 <Text style={{color: 'red'}}>
                   tmax: {climateData["tmax (deg c)"][0].toFixed(2)}{'\u00B0'}C
                 </Text> : null}
-                {climateData["tmin (deg c)"][0] != 0 ? 
+                {climateData["tmin (deg c)"][0] != 0 ?
                 <Text style={{ color: "blue", alignItems: "center"}}>
                   tmin: {climateData["tmin (deg c)"][0].toFixed(2)}{'\u00B0'}C{'\n'}
                 </Text> : null}
@@ -148,16 +150,16 @@ const FarmsMap = ({ navigation, search }) => {
         ))}
 
       </MapView>
-      
+
       </>
   )
 }
 
 
 /*
-  <Callout 
+  <Callout
               tooltip={false}
-              onPress={() => 
+              onPress={() =>
                 navigation.navigate('FarmPage', {farmName: farm.name, longitude: farm.longitude, latitude: farm.latitude})
               }>
               <View style={{backgroundColor: "white", flex: 1, alignItems: "center"}}>

@@ -10,7 +10,7 @@ const FarmPage = (props) => {
             <Text>{farmInfo.farmName}</Text>
             <Text>latitude:{farmInfo.latitude}</Text>
             <Text>longitude: {farmInfo.longitude}</Text>
-            <Graphs />
+            <Graphs years={farmInfo.years} precipData={farmInfo.precipData} tminData={farmInfo.tminData} tmaxData={farmInfo.tmaxData}/>
         </View>
     )
 }
