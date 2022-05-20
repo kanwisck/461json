@@ -43,6 +43,12 @@ const FarmsMap = ({ navigation, search }) => {
     "tmax (deg c)":[0],
     "tmin (deg c)":[0]
   })
+  // 30 year averages for info window
+  const [prcpAvg, setPrcpAvg] = useState(0)
+  const [tempMaxAvg, setTempMaxAvg] = useState(0)
+  const [tempMinAvg, setTempMinAvg] = useState(0)
+  // 30 year average function
+  const avg = (array) => array.reduce((a, b) => a + b) / array.length
 
   //----------------------Search Functionality----------------------
   useEffect(() => {
@@ -50,13 +56,17 @@ const FarmsMap = ({ navigation, search }) => {
     if (search != "") {
       farms.find((farm) => {
         // Look through all farm objects within farms
+        // If any of the values of that farm object contain the user's EXACT search
         if (Object.values(farm).toString().toLowerCase()
           .includes(search.toLowerCase())
+          // OR any of the farmData values have the user's EXACT search
           || Object.values(farm.farmData).toString().toLowerCase()
           .includes(search.toLowerCase())) {
-            // If any of the values of that farm object contain the user's search
-            // OR any of the farmData values have the user's search
           searchedFarms.push(farm) // add to searchedFarms
+          // Exact is emphasized because it will look for a perfect substring
+          // so searching for apples; barley will show different farms
+          // than typing barley; apples
+          // hosting this info on a db  and querying will make searching this much easier
         }
       })
       setFarms(searchedFarms)
@@ -110,6 +120,15 @@ const FarmsMap = ({ navigation, search }) => {
           onPress={
             () => {
               getCLimateData(farm.latitude, farm.longitude)
+              if (climateData["tmax (deg c)"][0]!= 0) {
+                // If we have actual queried data, not defaults
+                const arrayLength = climateData["tmax (deg c)"].length
+                setPrcpAvg(avg(climateData["prcp (mm/day)"].slice(arrayLength - (365*30))))
+                setTempMaxAvg(avg(climateData["tmax (deg c)"].slice(arrayLength - (365*30))))
+                setTempMinAvg(avg(climateData["tmin (deg c)"].slice(arrayLength - (365*30))))
+                // Get prcp 30 year average
+              }
+              
               //toggleWindow()
             }
           }
@@ -118,25 +137,28 @@ const FarmsMap = ({ navigation, search }) => {
               tooltip={false}
               onPress={() =>
                 navigation.navigate('FarmPage', {farmName: farm.name, longitude: farm.longitude, latitude: farm.latitude,
-                  years: climateData["year"], precipData: climateData["prcp (mm/day)"], tmaxData: climateData["tmax (deg c)"],
-                  tminData: climateData["tmin (deg c)"]})
+                  years: climateData["year"], 
+                  precipData: climateData["prcp (mm/day)"], 
+                  tmaxData: climateData["tmax (deg c)"],
+                  tminData: climateData["tmin (deg c)"]}
+                  )
               }>
               <View style={{backgroundColor: "white", alignItems: "center"}}>
                 <Text style={{color: 'black'}}>{farm.name}</Text>
                 <Button
-                  title="Click here to learn more"
+                  title="Tap to learn more"
                 />
-                {climateData["prcp (mm/day)"][0] != 0 ?
-                <Text style={{color: 'lightblue'}}>
-                  prcp: {climateData["prcp (mm/day)"][0].toFixed(2)}mm
+                {prcpAvg != 0 ?
+                <Text style={{color: '#66ccff'}}>
+                  prcp: {prcpAvg.toFixed(2)}mm
                 </Text> : null}
-                {climateData["tmax (deg c)"][0] != 0 ?
+                {tempMaxAvg != 0 ?
                 <Text style={{color: 'red'}}>
-                  tmax: {climateData["tmax (deg c)"][0].toFixed(2)}{'\u00B0'}C
+                  tmax: {tempMaxAvg.toFixed(2)}{'\u00B0'}C
                 </Text> : null}
-                {climateData["tmin (deg c)"][0] != 0 ?
-                <Text style={{ color: "blue", alignItems: "center"}}>
-                  tmin: {climateData["tmin (deg c)"][0].toFixed(2)}{'\u00B0'}C{'\n'}
+                {tempMinAvg != 0 ?
+                <Text style={{ color: 'blue', alignItems: "center"}}>
+                  tmin: {tempMinAvg.toFixed(2)}{'\u00B0'}C{'\n'}
                 </Text> : null}
                 <Text>
                 <Image

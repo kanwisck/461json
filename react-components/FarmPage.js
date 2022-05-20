@@ -8,8 +8,8 @@ const FarmPage = (props) => {
         <View style={{backgroundColor: "white", flex: 1, alignItems: "center"}}>
             <Text>Farm Page</Text>
             <Text>{farmInfo.farmName}</Text>
-            <Text>latitude:{farmInfo.latitude}</Text>
-            <Text>longitude: {farmInfo.longitude}</Text>
+            <Text>latitude:{farmInfo.latitude.toFixed(3)}</Text>
+            <Text>longitude: {farmInfo.longitude.toFixed(3)}</Text>
             <Graphs years={farmInfo.years} precipData={farmInfo.precipData} tminData={farmInfo.tminData} tmaxData={farmInfo.tmaxData}/>
         </View>
     )

@@ -66,7 +66,7 @@
        <VictoryChart maxDomain={{ y: 100 }}>
          <VictoryLine
         style={{
-          data: { stroke: "#01bfff" },
+          data: { stroke: "blue" },
           parent: { border: "1px solid #ccc"}
         }}
         data={min_averages}
