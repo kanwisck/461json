@@ -3,9 +3,6 @@ node_modules/
 # Gradle files
 build/
 .gradle/
-android/.gradle/
-android/build/
-android/
 
 
 # Local configuration file (sdk path, etc)
