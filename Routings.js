@@ -6,6 +6,7 @@ import FarmPage from "./react-components/FarmPage";
 
 const Stack = createNativeStackNavigator();
 
+// Used for navigating to a specific farm's page
 const Routings = () => (
     <NavigationContainer>
       <Stack.Navigator>

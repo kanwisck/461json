@@ -1,6 +1,7 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * FarmsMap Component
+ * Main screen of the application
+ * 
  *
  * @format
  * @flow strict-local
@@ -18,8 +19,18 @@ import MapView, { PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
 import { Text, Image, Button, View, StyleSheet, Dimensions} from 'react-native';
 import RNBottomActionSheet from 'react-native-bottom-action-sheet';
 
+/** Farm Data
+ * Currently stored in a json file in the root directory
+ * Could be converted into a database and queried from via an API
+ * Hess' Cloud Dev course (CS493) will teach you much of this
+ * 
+ * This will become outdated each year as more farms are awarded
+ * the Century Farm title. Download the latest version of the .csv at
+ * http://ocfrp.library.oregonstate.edu/public/farms
+ * and run generateFarmJSON.py when this happens
+ * (or use a more elegant, automated way)
+ */
 const data = require('../farmsNew.json');
-//console.log(data);
 
 //----------------------Styles----------------------
 const styles = StyleSheet.create({
@@ -86,6 +97,12 @@ const FarmsMap = ({ navigation, search }) => {
   */
 
   //----------------------API Query----------------------
+  /**
+   * Requests data from daymet API 
+   * obtains climate data from 1980 to most recent year available (up to 2021 as of May, 2022)
+   * Documentation: https://daymet.ornl.gov/web_services
+   * Specifically, we are querying Single Pixel Data. Not their Gridded Subsets
+   */
   const getCLimateData = async (lat, lon) => {
     try {
       const response = await fetch(`https://daymet.ornl.gov/single-pixel/api/data?lat=${lat}&lon=${lon}&vars=tmax,tmin,prcp&format=json`);
