@@ -10,12 +10,16 @@ class Farm:
                 self.longitude = lng
                 self.farmData = {}
         
-        # print class for debugging purposes
+        # print all values of the class for debugging purposes
         def __repr__(self):
                 farm = str(self.name) + "," + str(self.latitude) + "," + str(self.longitude) + "," + str(self.farmData) + "\n\n\n"
                 return farm
 
 # A bad way of making list for coords
+# NOTE: New farm coordinate entries must be appended at the bottom of this 
+# in the order they appear within the csv file
+# Make sure to delete rows from the csv which are not used
+# for example: farms where you couldn't verify ownership (and prove it's still a century farm)
 aList = []
 aList.append(Farm("Chambers Farm",
         44.6488167,
@@ -206,6 +210,12 @@ aList.append(Farm("Delano Farms",
 aList.append(Farm("The Beitel Farm",
         44.8278554054365, 
         -122.7628299775307))
+# start adding more farms to the list here
+# farm names are often (but not always) included in the csv file
+# consider integrating longitude and latitude into farmData
+# to avoid the use of child objects
+# will require changing some of the for loop below 
+
 
 # Parse OSFRP data
 with open('farms.csv', newline='') as csvfile:

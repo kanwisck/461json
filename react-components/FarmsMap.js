@@ -18,35 +18,40 @@ import React, {useState, useEffect } from 'react';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
 import { Text, Image, Button, View, StyleSheet, Dimensions} from 'react-native';
 import RNBottomActionSheet from 'react-native-bottom-action-sheet';
-
+let AlertView = RNBottomActionSheet.AlertView
 /** Farm Data
  * Currently stored in a json file in the root directory
  * Could be converted into a database and queried from via an API
- * Hess' Cloud Dev course (CS493) will teach you much of this
+ * Hess' Cloud Dev course (CS493) teaches much of this
  * 
  * This will become outdated each year as more farms are awarded
- * the Century Farm title. Download the latest version of the .csv at
+ * the Century Farm title. When this happens, download the latest version of the .csv at
  * http://ocfrp.library.oregonstate.edu/public/farms
- * and run generateFarmJSON.py when this happens
+ * follow the update instructions included in generateFarmJSON.py and run it
  * (or use a more elegant, automated way)
  */
 const data = require('../farmsNew.json');
 
 //----------------------Styles----------------------
 const styles = StyleSheet.create({
+  infowindow: {
+    flex: 1,
+    backgroundColor: '#fff',
+    position:'absolute',
+
+  },
   map: {
-      position: "absolute",
+      
       width: Dimensions.get("window").width,
       height: Dimensions.get("window").height,
-      flex: 1,
   },
 });
-
 
 
 const FarmsMap = ({ navigation, search }) => {
   const [farms, setFarms] = useState(data)
   var searchedFarms = []
+  const [selectedFarm, setSelectedFarm] = useState({})
   const [climateData, setClimateData] = useState({
     "year":[0],
     "yday":[0],
@@ -55,9 +60,9 @@ const FarmsMap = ({ navigation, search }) => {
     "tmin (deg c)":[0]
   })
   // 30 year averages for info window
-  const [prcpAvg, setPrcpAvg] = useState(0)
-  const [tempMaxAvg, setTempMaxAvg] = useState(0)
-  const [tempMinAvg, setTempMinAvg] = useState(0)
+  const [prcpAvg, setPrcpAvg] = useState("loading...")
+  const [tempMaxAvg, setTempMaxAvg] = useState("loading...")
+  const [tempMinAvg, setTempMinAvg] = useState("loading...")
   // 30 year average function
   const avg = (array) => array.reduce((a, b) => a + b) / array.length
 
@@ -86,15 +91,7 @@ const FarmsMap = ({ navigation, search }) => {
       setFarms(data)
     }
   }, [search])
-
-  /*
-  //----------------------Bottom Action Sheet Stuff----------------------
-  const [alterView, setAlterView] = React.useState(false)
-  const toggleWindow = React.useCallback(
-    () => setAlterView(!alterView),
-    [alterView, setAlterView],
-  )
-  */
+  
 
   //----------------------API Query----------------------
   /**
@@ -126,121 +123,60 @@ const FarmsMap = ({ navigation, search }) => {
           latitudeDelta: 1.7,
           longitudeDelta: 1.7
         }}
-        mapType="satellite">
+        mapType="satellite"
+    >
 
-        {Object.entries(farms).map(([key, farm]) => (
-          // Place a marker for all farm objects inside farms array
-          <Marker
-          key={key} // to make react happy
-          coordinate={{latitude: farm.latitude, longitude: farm.longitude}}
-          pinColor="#360071"
-          onPress={
-            () => {
-              getCLimateData(farm.latitude, farm.longitude)
-              if (climateData["tmax (deg c)"][0]!= 0) {
-                // If we have actual queried data, not defaults
-                const arrayLength = climateData["tmax (deg c)"].length
-                setPrcpAvg(avg(climateData["prcp (mm/day)"].slice(arrayLength - (365*30))))
-                setTempMaxAvg(avg(climateData["tmax (deg c)"].slice(arrayLength - (365*30))))
-                setTempMinAvg(avg(climateData["tmin (deg c)"].slice(arrayLength - (365*30))))
-                // Get prcp 30 year average
-              }
-              
-              //toggleWindow()
-            }
+      {Object.entries(farms).map(([key, farm]) => (
+        // Place a marker for all farm objects inside farms array
+        <Marker
+        key={key} // to make react happy
+        coordinate={{latitude: farm.latitude, longitude: farm.longitude}}
+        pinColor="#360071"
+        onPress={() => {
+          setSelectedFarm(farm)
+          getCLimateData(farm.latitude, farm.longitude)
+          if (climateData["tmax (deg c)"].length > 1) {
+            // If we have actual queried data, not defaults
+            const arrayLength = climateData["tmax (deg c)"].length
+            setPrcpAvg(avg(climateData["prcp (mm/day)"].slice(arrayLength - (365*30))))
+            setTempMaxAvg(avg(climateData["tmax (deg c)"].slice(arrayLength - (365*30))))
+            setTempMinAvg(avg(climateData["tmin (deg c)"].slice(arrayLength - (365*30))))
+            console.log(prcpAvg, tempMaxAvg, tempMinAvg)
+            // Get prcp 30 year average
           }
-          >
-          <Callout
-              tooltip={false}
-              onPress={() =>
-                navigation.navigate('FarmPage', {farmName: farm.name, longitude: farm.longitude, latitude: farm.latitude,
-                  years: climateData["year"], 
-                  precipData: climateData["prcp (mm/day)"], 
-                  tmaxData: climateData["tmax (deg c)"],
-                  tminData: climateData["tmin (deg c)"]}
-                  )
-              }>
-              <View style={{backgroundColor: "white", alignItems: "center"}}>
-                <Text style={{color: 'black'}}>{farm.name}</Text>
-                <Button
-                  title="Tap to learn more"
-                />
-                {prcpAvg != 0 ?
-                <Text style={{color: '#66ccff'}}>
-                  prcp: {prcpAvg.toFixed(2)}mm
-                </Text> : null}
-                {tempMaxAvg != 0 ?
-                <Text style={{color: 'red'}}>
-                  tmax: {tempMaxAvg.toFixed(2)}{'\u00B0'}C
-                </Text> : null}
-                {tempMinAvg != 0 ?
-                <Text style={{ color: 'blue', alignItems: "center"}}>
-                  tmin: {tempMinAvg.toFixed(2)}{'\u00B0'}C{'\n'}
-                </Text> : null}
-                <Text>
-                <Image
-                        source={{ uri: 'https://oregonhazelnuts.org/wordpress/wp-content/uploads/2020/05/Chambers-Trees-1540x819.jpg' }}
-                        style={{ width: 300, height: 200 }}
-                    />
-                </Text>
-              </View>
-            </Callout>
-          </Marker>
-        ))}
-
-      </MapView>
-
-      </>
+          
+          AlertView.Show({
+            title: farm.name,
+            message: `prcp: ${prcpAvg}\ntmax: ${tempMaxAvg}\ntmin: ${tempMinAvg}`,
+            positiveText: "Learn More",
+            positiveBackgroundColor: "#eeffee",
+            positiveTextColor: "#006500",
+            negativeText: "Exit",
+            negativeBackgroundColor: "red",
+            negativeTextColor: "#006500",
+            theme: 'light',
+            onPositive: () => {
+              // navigate to this farm's page
+              navigation.navigate('FarmPage', 
+                {farmName: farm.name, 
+                longitude: farm.longitude, 
+                latitude: farm.latitude,
+                years: climateData["year"], 
+                precipData: climateData["prcp (mm/day)"], 
+                tmaxData: climateData["tmax (deg c)"],
+                tminData: climateData["tmin (deg c)"]}
+            )},
+            onNegative: () => {
+              // Closes the panel by default
+            }
+            })
+        }}
+        >
+        </Marker>
+      ))}
+    </MapView>
+    </>
   )
 }
 
-
-/*
-  <Callout
-              tooltip={false}
-              onPress={() =>
-                navigation.navigate('FarmPage', {farmName: farm.name, longitude: farm.longitude, latitude: farm.latitude})
-              }>
-              <View style={{backgroundColor: "white", flex: 1, alignItems: "center"}}>
-                <Text style={{color: 'black'}}>{farm.name}</Text>
-                <Text></Text>
-                {climateData.year[0] != 0 ? <Text>{climateData.year[0]}</Text> : null}
-                <Text>{}</Text>
-                <Text>
-                    <Image
-                        source={{ uri: 'https://oregonhazelnuts.org/wordpress/wp-content/uploads/2020/05/Chambers-Trees-1540x819.jpg' }}
-                        style={{ width: 300, height: 200 }}
-                    />
-                </Text>
-                <Button
-                  title="Click here to learn more"
-                />
-              </View>
-            </Callout>
-
-
-            <RNBottomActionSheet.AlertView
-            visible={alterView}
-            title={"Awesome!"}
-            message={"What can we improve? Your feedback is always welcome."}
-            positiveText={"OK"}
-            positiveBackgroundColor={"#eeffee"}
-            positiveTextColor={"#006500"}
-            negativeText={"Exit"}
-            negativeBackgroundColor={"#ffebeb"}
-            negativeTextColor={"#760000"}
-            theme={"light"}
-            onPositive={() => {
-              console.log("positive clicked");
-              console.log("before pos", alterView)
-              toggleWindow()
-              console.log("after pos", alterView)
-            }}
-            onNegative={() => {
-              console.log("negative clicked");
-              console.log("before negative", alterView)
-              toggleWindow()
-              console.log("after negative", alterView)
-            }} />
-*/
 export default FarmsMap;
