@@ -8,8 +8,8 @@
  */
 
 import React, {useState, useEffect } from 'react';
-import MapView, { PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
-import { Text, Image, Button, View, StyleSheet, Dimensions} from 'react-native';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import { StyleSheet, Dimensions } from 'react-native';
 import RNBottomActionSheet from 'react-native-bottom-action-sheet';
 let AlertView = RNBottomActionSheet.AlertView
 /** Farm Data
@@ -23,7 +23,7 @@ let AlertView = RNBottomActionSheet.AlertView
  * follow the update instructions included in generateFarmJSON.py and run it
  * (or use a more elegant, automated way)
  */
-const data = require('../farmsNew.json');
+const data = require('../farms.json');
 
 //----------------------Styles----------------------
 const styles = StyleSheet.create({
@@ -154,6 +154,7 @@ const FarmsMap = ({ navigation, search }) => {
                 longitude: farm.longitude, 
                 latitude: farm.latitude,
                 farmData: farm.farmData,
+                url: farm.url.toString(),
                 years: climateData["year"], 
                 precipData: climateData["prcp (mm/day)"], 
                 tmaxData: climateData["tmax (deg c)"],

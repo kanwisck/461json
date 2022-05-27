@@ -1,14 +1,19 @@
+from asyncio.windows_events import NULL
 from email.policy import default
 import json
 import csv
 
 # Farm class
 class Farm:
-        def __init__(self, name, lat, lng):
+        def __init__(self, name, lat, lng, url=NULL):
                 self.name = name
                 self.latitude = lat
                 self.longitude = lng
                 self.farmData = {}
+                if (url):
+                        self.url = url
+                else:
+                        self.url = NULL
         
         # print all values of the class for debugging purposes
         def __repr__(self):
@@ -21,6 +26,22 @@ class Farm:
 # Make sure to delete rows from the csv which are not used
 # for example: farms where you couldn't verify ownership (and prove it's still a century farm)
 aList = []
+aList.append(Farm("Reynolds Farms",
+        44.612636, 
+        -123.214536))
+aList.append(Farm("Garland Nursery",
+        44.624781, 
+        -123.207734))
+aList.append(Farm("Scharf Family Farm",
+        45.038913, 
+        -123.235096))
+aList.append(Farm("Fiala Farms",
+        45.371628, 
+        -122.690767,
+        "https://lh3.googleusercontent.com/pw/AM-JKLVjJ7Dbi05YTz4eR1nC7Ptb9v71pLFWejg--Pr6axj24yOa_uo21w3B1DBvcCYRY17XGUkp0rfym7vTcEQnlzIBoVg0LD52YbJxlXWe1sSiIWb_0SamPTDTRfr7ivzeo7Ba4AyLVYFabZsRcVDl0r6V=w703-h937-no?authuser=0"))
+aList.append(Farm("Harnisch Farms",
+        44.721034, 
+        -123.074716))
 aList.append(Farm("Chambers Farm",
         44.6488167,
         -123.0253000))
@@ -111,9 +132,10 @@ aList.append(Farm("Jansen Farm",
 aList.append(Farm("Plagmann Farms, Inc.",
          44.657283, 
         -122.951597))
-aList.append(Farm("The Romig Ranch",
+aList.append(Farm("Two Fox Farm",
          45.049030, 
-        -123.202956))
+        -123.202956,
+        "https://lh3.googleusercontent.com/pw/AM-JKLXEFg_paGnsS2YZUEvIZfmVhemTCWYGStWhTulba3bR4YvvmGk5jFFyw9mis-2-h0xmXKNPfWwpZPbXj1T6iYTUPsWCmJqHQ6P-J9lNjgB4ESp9Sh036tiz0s3IfgFb6iq7Mddqp7du-J2nr8OAkWOW=w703-h937-no?authuser=0"))
 aList.append(Farm("Charles Ludwig Falk Farm",
          44.372268, 
         -123.078142))
@@ -164,7 +186,8 @@ aList.append(Farm("Iwasaki Bros. Inc.",
         -122.966665))
 aList.append(Farm("The Misner Family Farm",
          44.634869, 
-        -122.906599))
+        -122.906599,
+        "https://lh3.googleusercontent.com/pw/AM-JKLWoivHhYk60ZeitgOcogoxKtR6gVznXLaFFoiq5P9mclELoWWvj4ZQlCbMxaLj5rkPKTostOrS5g1Ivq77Ivr6HtzjEYHaFlmgieyvIZgV6kIhn4l6DHfT_ygNaWeDTWMcKY-Qx8pQc7ohwmvbe9jOw=w703-h937-no?authuser=0"))
 aList.append(Farm("Cattrall Brothers Vineyards",
          45.090944, 
         -123.162414))
@@ -226,7 +249,7 @@ with open('farms.csv', newline='') as csvfile:
                 
 # Convert to JSON
 jsonString = json.dumps(aList, default= lambda x: x.__dict__)
-jsonFile = open("farmsNew.json", "w")
+jsonFile = open("farms.json", "w")
 jsonFile.write(jsonString)
 jsonFile.close()
 

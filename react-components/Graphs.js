@@ -95,9 +95,8 @@ const TempGraph = ({years, data_min, data_max}) => {
 // Graphs precipitation averages by year
 // Takes in daymet climate data
 const PrecipGraph = ({years, data}) => {
-  var unique_years = [...new Set(years)];
-  var data_obj = [];
-  var averages = [];
+  var unique_years = [...new Set(years)]
+  var data_obj = []
   var precipData = []
 
   // Array setup for computing average

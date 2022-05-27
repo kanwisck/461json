@@ -3446,11 +3446,6 @@
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
 
-"fsevents@^2.1.2", "fsevents@^2.3.2":
-  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
-  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
-  "version" "2.3.2"
-
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
   "resolved" "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
@@ -6037,6 +6032,13 @@
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
 
+"react-native-drop-shadow@^0.0.4":
+  "integrity" "sha512-45Bsq24dcc1rK9H+42H91xEYN/Ql5S0693FseQWdCKgri6D+4vkFeL9dgtrSD5Bg3+RffjMbPDD7BuNS9BZuvg=="
+  "resolved" "https://registry.npmjs.org/react-native-drop-shadow/-/react-native-drop-shadow-0.0.4.tgz"
+  "version" "0.0.4"
+  dependencies:
+    "logkitty" "^0.7.1"
+
 "react-native-elements@^3.4.2":
   "integrity" "sha512-m0eAWOn7JuR1wNTNY0WHuaqst4LI/gFE4N5Bbyfsc4DiryWsMST7aAg5w/Gos4IexWIzhLKCIkPxthND1m/8Xg=="
   "resolved" "https://registry.npmjs.org/react-native-elements/-/react-native-elements-3.4.2.tgz"
@@ -6129,7 +6131,7 @@
     "normalize-css-color" "^1.0.2"
     "prop-types" "^15.6.0"
 
-"react-native@*", "react-native@>= 0.51", "react-native@>=0.50.0", "react-native@0.67.3":
+"react-native@*", "react-native@>= 0.51", "react-native@>=0.50.0", "react-native@>=0.61.5", "react-native@0.67.3":
   "integrity" "sha512-epMVRMRH7dLCis97+YwiV4dmTVZO6qKmQgwcTNcxVt/kEMxAa+OYK7h81+99/n7XCeMFk/U2zYOBuQqc7c5Amg=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.67.3.tgz"
   "version" "0.67.3"
