@@ -65,6 +65,14 @@ const TempGraph = ({years, data_min, data_max}) => {
   return (
     <View style={graphStyles.container}>
       <VictoryChart maxDomain={{ y: 100 }}>
+        <VictoryAxis dependentAxis 
+          style={{
+            grid: { stroke: '#D9D9D9', strokeWidth: 1},
+          }}/>
+        <VictoryAxis tickFormat={(t) => `${t}`}
+          style={{
+            grid: { stroke: '#D9D9D9', strokeWidth: 1},
+          }}/>
         <VictoryLine
           style={{
             data: { stroke: "blue" },
@@ -79,8 +87,6 @@ const TempGraph = ({years, data_min, data_max}) => {
           }}
           data={max_averages}
         />
-        <VictoryAxis dependentAxis />
-        <VictoryAxis tickFormat={(t) => `${t}`}/>
       </VictoryChart>
     </View>
   );
@@ -109,9 +115,17 @@ const PrecipGraph = ({years, data}) => {
   return (
     <View style={graphStyles.container}>
       <VictoryChart maxDomain={{ y: 15 }}>
-      <VictoryBar width={350} style={{data: {fill: "#66ccff"}}} data={precipData} />
-      <VictoryAxis dependentAxis />
-      <VictoryAxis tickFormat={(t) => `${t}`}/>
+        <VictoryAxis 
+          dependentAxis 
+          style={{
+            grid: { stroke: '#D9D9D9', strokeWidth: 1},
+          }}/>
+        <VictoryAxis 
+          tickFormat={(t) => `${t}`} 
+          style={{
+            grid: { stroke: '#D9D9D9', strokeWidth: 1},
+          }}/>
+        <VictoryBar width={350} style={{data: {fill: "#66ccff"}}} data={precipData} />
       </VictoryChart>
     </View>
   );
@@ -122,7 +136,7 @@ const graphStyles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f5fcff",
+    backgroundColor: "#fff",
   }
 });
 
@@ -130,14 +144,14 @@ const graphStyles = StyleSheet.create({
 // Display all graphs
 const Graphs = ({years, precipData, tmaxData, tminData}) => {
   return (
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <View>
-            <Text style={styles.titleText}>Temperature (°F)</Text>
-            <TempGraph years={years} data_min={tminData} data_max={tmaxData}/>
-            <Text style={styles.titleText}>Precipitation (Inches)</Text>
-            <PrecipGraph years={years} data={precipData}/>
-          </View>
-      </ScrollView>
+
+    <View>
+      <Text style={styles.titleText}>Temperature (°F)</Text>
+      <TempGraph years={years} data_min={tminData} data_max={tmaxData}/>
+      <Text style={styles.titleText}>Precipitation (Inches)</Text>
+      <PrecipGraph years={years} data={precipData}/>
+    </View>
+
   );
 };
 
@@ -160,12 +174,13 @@ const styles = StyleSheet.create({
   },
   allText: {
     textAlign: 'center',
-    backgroundColor: '#f5fcff',
+    backgroundColor: '#fff',
   },
   titleText: {
+    color:"#000",
     textAlign: 'center',
     fontSize: 26,
-    backgroundColor: '#f5fcff',
+    backgroundColor: '#fff',
   }
 });
 

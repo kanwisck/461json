@@ -15,7 +15,7 @@ const Routings = () => (
           component={Wrapper}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="FarmPage" component={FarmPage} />
+        <Stack.Screen name="FarmPage" component={FarmPage} options={{title: ""}} />
       </Stack.Navigator>
     </NavigationContainer>
 )

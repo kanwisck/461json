@@ -7,13 +7,6 @@
  * @flow strict-local
  */
 
-/*---------Todo---------
- 1. Look into info window for google maps
- 2. use Map to loop through react markers and polygons
-
-*/
-
-
 import React, {useState, useEffect } from 'react';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout} from 'react-native-maps';
 import { Text, Image, Button, View, StyleSheet, Dimensions} from 'react-native';
@@ -41,9 +34,10 @@ const styles = StyleSheet.create({
 
   },
   map: {
-      
+      position:"absolute",
       width: Dimensions.get("window").width,
       height: Dimensions.get("window").height,
+      flex: 1,
   },
 });
 
@@ -133,21 +127,19 @@ const FarmsMap = ({ navigation, search }) => {
         coordinate={{latitude: farm.latitude, longitude: farm.longitude}}
         pinColor="#360071"
         onPress={() => {
-          setSelectedFarm(farm)
           getCLimateData(farm.latitude, farm.longitude)
           if (climateData["tmax (deg c)"].length > 1) {
             // If we have actual queried data, not defaults
             const arrayLength = climateData["tmax (deg c)"].length
-            setPrcpAvg(avg(climateData["prcp (mm/day)"].slice(arrayLength - (365*30))))
-            setTempMaxAvg(avg(climateData["tmax (deg c)"].slice(arrayLength - (365*30))))
-            setTempMinAvg(avg(climateData["tmin (deg c)"].slice(arrayLength - (365*30))))
-            console.log(prcpAvg, tempMaxAvg, tempMinAvg)
+            setPrcpAvg(avg(climateData["prcp (mm/day)"].slice(arrayLength - (365*30))).toFixed(2))
+            setTempMaxAvg(avg(climateData["tmax (deg c)"].slice(arrayLength - (365*30))).toFixed(2))
+            setTempMinAvg(avg(climateData["tmin (deg c)"].slice(arrayLength - (365*30))).toFixed(2))
             // Get prcp 30 year average
           }
           
           AlertView.Show({
             title: farm.name,
-            message: `prcp: ${prcpAvg}\ntmax: ${tempMaxAvg}\ntmin: ${tempMinAvg}`,
+            message: `prcp: ${prcpAvg}mm\ntmax: ${tempMaxAvg}\u00B0C\ntmin: ${tempMinAvg}\u00B0C`,
             positiveText: "Learn More",
             positiveBackgroundColor: "#eeffee",
             positiveTextColor: "#006500",
@@ -161,6 +153,7 @@ const FarmsMap = ({ navigation, search }) => {
                 {farmName: farm.name, 
                 longitude: farm.longitude, 
                 latitude: farm.latitude,
+                farmData: farm.farmData,
                 years: climateData["year"], 
                 precipData: climateData["prcp (mm/day)"], 
                 tmaxData: climateData["tmax (deg c)"],
