@@ -1,5 +1,4 @@
 Requirements:
-Github repo: https://github.com/kanwisck/CenturyFarmApp
 
 - Python installed on your computer
     - React native emulation software (varies)
