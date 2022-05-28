@@ -21,9 +21,9 @@ class Farm:
                 return farm
 
 # A bad way of making list for coords
-# NOTE: New farm coordinate entries must be appended at the bottom of this 
+# NOTE: New farm coordinate entries must be appended
 # in the order they appear within the csv file
-# Make sure to delete rows from the csv which are not used
+# Make sure to delete rows (farms) from the csv which are not included
 # for example: farms where you couldn't verify ownership (and prove it's still a century farm)
 aList = []
 aList.append(Farm("Reynolds Farms",
@@ -252,8 +252,3 @@ jsonString = json.dumps(aList, default= lambda x: x.__dict__)
 jsonFile = open("farms.json", "w")
 jsonFile.write(jsonString)
 jsonFile.close()
-
-#kml_file = open('./kmlFiles/tideman.kml')
-#with open(kml_file) as f:
-#    doc = parser.parse(f).getroot()
-#    print(root.Document.name)
