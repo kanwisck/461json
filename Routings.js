@@ -1,20 +1,21 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import FarmsMap from "./FarmsMap";
-import FarmPage from "./FarmPage";
+import Wrapper from './react-components/Wrapper'
+import FarmPage from "./react-components/FarmPage";
 
 const Stack = createNativeStackNavigator();
 
+// Used for navigating to a specific farm's page
 const Routings = () => (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="FarmsMap"
-          component={FarmsMap}
-          options={{ title: 'Century Farms App' }}
+          name="Wrapper"
+          component={Wrapper}
+          options={{headerShown: false}}
         />
-        <Stack.Screen name="FarmPage" component={FarmPage} />
+        <Stack.Screen name="FarmPage" component={FarmPage} options={{title: ""}} />
       </Stack.Navigator>
     </NavigationContainer>
 )
